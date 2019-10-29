@@ -2,6 +2,67 @@ body {
   margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body, input, textarea, button {
+  font-size: 24px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+#app {
+  margin: auto;
+  width: 500px;
+  margin-top: 100px;
+}
+
+#generatedPassword {
+  width: 100%;
+  height: 70px;
+  border: none;
+  outline: none;
+  padding: 0 20px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #efefef;
+}
+
+.option {
+  margin-top: 20px;
+}
+.option:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+.option:first-child {
+  margin-top: 40px;
+}
+
+.optionTitle {
+  float: left;
+  text-transform: uppercase;
+}
+
+.optionValue {
+  float: right;
+}
+
+.optionRange {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  margin-top: 10px;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  background-color: #efefef;
+}
+.optionRange::-webkit-slider-thumb {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  background-color: #d5d5d5;
 }

@@ -4,10 +4,73 @@
   <title>Piper</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="style.css?v=1" />
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body>
-  test
+  <div id="app">
+    <input
+      readonly
+      type="text"
+      id="generatedPassword"
+      value="pfL3ro9&b38=WySs"
+    />
+
+    <div id="options">
+      <div class="option">
+        <div class="optionTitle">
+          Length
+        </div>
+
+        <div class="optionValue">
+          16
+        </div>
+
+        <input
+          min="1"
+          max="36"
+          value="16"
+          type="range"
+          class="optionRange"
+        />
+      </div>
+
+      <div class="option">
+        <div class="optionTitle">
+          Digits
+        </div>
+
+        <div class="optionValue">
+          4
+        </div>
+
+        <input
+          min="1"
+          max="36"
+          value="4"
+          type="range"
+          class="optionRange"
+        />
+      </div>
+
+      <div class="option">
+        <div class="optionTitle">
+          Symbols
+        </div>
+
+        <div class="optionValue">
+          4
+        </div>
+
+        <input
+          min="1"
+          max="36"
+          value="4"
+          type="range"
+          class="optionRange"
+        />
+      </div>
+    </div>
+  </div>
   <script src="app.js?v=1"></script>
 </body>
 </html>
