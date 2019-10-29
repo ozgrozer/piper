@@ -35,6 +35,7 @@ const passwordGenerator = () => {
   const newPassword = generatePassword(options.length)
   generatedPasswordSelector.value = newPassword
 }
+passwordGenerator()
 
 const rangeListener = function () {
   window.requestAnimationFrame(() => {
