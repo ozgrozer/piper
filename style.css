@@ -54,6 +54,14 @@ body, input, textarea, button {
   display: table;
 }
 
+.optionCheckboxWrapper {
+  float: left;
+  cursor: pointer;
+  user-select: none;
+}
+.optionCheckboxWrapper.checked .optionCheckbox {
+  background-color: #d5d5d5;
+}
 .optionCheckbox {
   float: left;
   width: 30px;

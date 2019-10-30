@@ -4,7 +4,7 @@
   <title>Piper</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
   <div id="app">
@@ -38,10 +38,15 @@
       </div>
 
       <div class="option2">
-        <div class="optionCheckbox"></div>
+        <div
+          data-id="lowercase"
+          class="optionCheckboxWrapper checked"
+        >
+          <div class="optionCheckbox"></div>
 
-        <div class="optionCheckboxBigTitle">
-          Lowercase
+          <div class="optionCheckboxBigTitle">
+            Lowercase
+          </div>
         </div>
 
         <div class="optionCheckboxSmallTitle">
@@ -50,10 +55,15 @@
       </div>
 
       <div class="option2">
-        <div class="optionCheckbox"></div>
+        <div
+          data-id="uppercase"
+          class="optionCheckboxWrapper"
+        >
+          <div class="optionCheckbox"></div>
 
-        <div class="optionCheckboxBigTitle">
-          Uppercase
+          <div class="optionCheckboxBigTitle">
+            Uppercase
+          </div>
         </div>
 
         <div class="optionCheckboxSmallTitle">
@@ -62,10 +72,15 @@
       </div>
 
       <div class="option2">
-        <div class="optionCheckbox"></div>
+        <div
+          data-id="digits"
+          class="optionCheckboxWrapper"
+        >
+          <div class="optionCheckbox"></div>
 
-        <div class="optionCheckboxBigTitle">
-          Digits
+          <div class="optionCheckboxBigTitle">
+            Digits
+          </div>
         </div>
 
         <div class="optionCheckboxSmallTitle">
@@ -74,10 +89,15 @@
       </div>
 
       <div class="option2">
-        <div class="optionCheckbox"></div>
+        <div
+          data-id="symbols"
+          class="optionCheckboxWrapper"
+        >
+          <div class="optionCheckbox"></div>
 
-        <div class="optionCheckboxBigTitle">
-          Symbols
+          <div class="optionCheckboxBigTitle">
+            Symbols
+          </div>
         </div>
 
         <div class="optionCheckboxSmallTitle">
@@ -87,6 +107,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

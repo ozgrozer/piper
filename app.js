@@ -1,9 +1,9 @@
 const options = {
   length: 16,
   lowercase: true,
-  uppercase: true,
-  digits: true,
-  symbols: true
+  uppercase: false,
+  digits: false,
+  symbols: false
 }
 
 const randomNumber = (min, max) => {
@@ -36,6 +36,24 @@ const passwordGenerator = () => {
   generatedPasswordSelector.value = newPassword
 }
 passwordGenerator()
+
+const checkboxListener = function () {
+  const getId = this.getAttribute('data-id')
+  options[getId] = !options[getId]
+  passwordGenerator()
+
+  if (options[getId] === true) {
+    this.classList.add('checked')
+  } else {
+    this.classList.remove('checked')
+  }
+}
+
+const checkboxes = document.getElementsByClassName('optionCheckboxWrapper')
+for (let i = 0; i < checkboxes.length; i++) {
+  const checkbox = checkboxes[i]
+  checkbox.addEventListener('click', checkboxListener)
+}
 
 const rangeListener = function () {
   window.requestAnimationFrame(() => {
