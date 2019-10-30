@@ -4,29 +4,18 @@ const options = {
   symbols: 4
 }
 
-const shuffleArray = array => {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
-  }
-  return array
+const randomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-const generatePassword = passwordLength => {
-  const numberChars = "0123456789"
-  const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  const lowerChars = "abcdefghiklmnopqrstuvwxyz"
-  const allChars = numberChars + upperChars + lowerChars
-  let randPasswordArray = Array(passwordLength)
-  randPasswordArray[0] = numberChars
-  randPasswordArray[1] = upperChars
-  randPasswordArray[2] = lowerChars
-  randPasswordArray = randPasswordArray.fill(allChars, 3)
-  const result = shuffleArray(randPasswordArray.map(x => {
-    return x[Math.floor(Math.random() * x.length)]
-  })).join('')
+const generatePassword = length => {
+  let result = ''
+  const characters = 'abcdefghijklmnopqrstuvwxyz'
+  const charactersLength = characters.length
+  for (let i = 0; i < length; i++) {
+    const randomCharacterNumber = randomNumber(0, charactersLength)
+    result += characters.charAt(randomCharacterNumber)
+  }
   return result
 }
 
