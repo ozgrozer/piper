@@ -1,7 +1,9 @@
 const options = {
   length: 16,
-  digits: 4,
-  symbols: 4
+  lowercase: true,
+  uppercase: true,
+  digits: true,
+  symbols: true
 }
 
 const randomNumber = (min, max) => {
@@ -9,11 +11,20 @@ const randomNumber = (min, max) => {
 }
 
 const generatePassword = length => {
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz'
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const digits = '0123456789'
+  const symbols = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~'
+
+  let characters = ''
+  if (options.lowercase) characters += lowercase
+  if (options.uppercase) characters += uppercase
+  if (options.digits) characters += digits
+  if (options.symbols) characters += symbols
+
   let result = ''
-  const characters = 'abcdefghijklmnopqrstuvwxyz'
-  const charactersLength = characters.length
   for (let i = 0; i < length; i++) {
-    const randomCharacterNumber = randomNumber(0, charactersLength)
+    const randomCharacterNumber = randomNumber(0, characters.length)
     result += characters.charAt(randomCharacterNumber)
   }
   return result

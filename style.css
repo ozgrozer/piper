@@ -38,30 +38,56 @@ body, input, textarea, button {
   background-color: #efefef;
 }
 
-.option {
+.option1 {
+  height: 70px;
+  overflow: hidden;
+  margin-top: 40px;
+}
+.option2 {
+  height: 30px;
+  overflow: hidden;
   margin-top: 20px;
 }
-.option:after {
+.option1:after, .option2:after {
   content: '';
   clear: both;
   display: table;
 }
-.option:first-child {
-  margin-top: 40px;
+
+.optionCheckbox {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: #efefef;
+}
+.optionCheckboxBigTitle {
+  float: left;
+  margin-left: 16px;
+}
+.optionCheckboxSmallTitle {
+  color: #777;
+  float: right;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.optionCheckboxBigTitle, .optionTitle {
+  line-height: 30px;
+  text-transform: uppercase;
 }
 
 .optionTitle {
   float: left;
-  text-transform: uppercase;
 }
-
 .optionValue {
   float: right;
+  line-height: 30px;
 }
-
 .optionRange {
   width: 100%;
   height: 30px;
+  font-size: 0;
   outline: none;
   margin-top: 10px;
   border-radius: 4px;
