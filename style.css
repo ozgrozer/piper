@@ -4,6 +4,7 @@
     --bodyBackgroundColor: #444;
     --checkboxColor: #616060;
     --checkboxSelectedColor: #807e7e;
+    --gitHubIcon: url('images/github/github-mark-light-32px.png');
   }
 }
 
@@ -13,6 +14,7 @@
     --bodyBackgroundColor: #fff;
     --checkboxColor: #efefef;
     --checkboxSelectedColor: #d5d5d5;
+    --gitHubIcon: url('images/github/github-mark-dark-32px.png');
   }
 }
 
@@ -55,7 +57,21 @@ body, input, button {
 }
 
 #appTitle {
+  margin-top: 0;
+  font-size: 48px;
+  line-height: 54px;
   margin-bottom: 30px;
+}
+#gitHubIcon {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  line-height: 54px;
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: var(--gitHubIcon);
 }
 
 #generatedPasswordWrapper {
