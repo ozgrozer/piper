@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>Piper</title>
+  <title>Piper: Random Password Generator</title>
 
   <meta charset="utf-8" />
   <meta name="theme-color" content="#000000" />
@@ -14,16 +14,21 @@
   <link rel="apple-touch-icon" href="images/icons/icon-512x512.png" />
 
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
   <link rel="icon" type="image/png" href="images/icons/icon-512x512.png" />
 </head>
 <body>
   <div id="app">
-    <input
-      readonly
-      type="text"
-      id="generatedPassword"
-    />
+    <div id="generatedPasswordWrapper">
+      <input
+        readonly
+        type="text"
+        id="generatedPassword"
+      />
+
+      <div id="generateNewPassword">g</div>
+      <div id="copyPassword">c</div>
+    </div>
 
     <div id="options">
       <div class="option1">
@@ -114,6 +119,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

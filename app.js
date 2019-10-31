@@ -1,16 +1,26 @@
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-}
-
 const writeCookie = props => {
   const theDate = new Date()
   const oneYearLater = new Date(theDate.getTime() + 31536000000)
   const expiryDate = oneYearLater.toGMTString()
   document.cookie = props.key + '=' + props.value + '; expires=' + expiryDate + '; path=/'
 }
+
 const readCookie = props => {
   const getCookie = document.cookie.match('(^|;)\\s*' + props.key + '\\s*=\\s*([^;]+)')
   return getCookie ? JSON.parse(getCookie.pop()) : ''
+}
+
+const copyToClipboard = str => {
+  const el = document.createElement('textarea')
+  el.value = str
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand('copy')
+  document.body.removeChild(el)
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
 }
 
 const getCookie = {
@@ -122,3 +132,11 @@ for (let i = 0; i < ranges.length; i++) {
   const optionValue = document.getElementById(getId + 'Value')
   optionValue.innerHTML = options[getId]
 }
+
+document.getElementById('generateNewPassword').addEventListener('click', () => {
+  passwordGenerator()
+})
+
+document.getElementById('copyPassword').addEventListener('click', () => {
+  copyToClipboard(generatedPasswordSelector.value)
+})
