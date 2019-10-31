@@ -1,12 +1,33 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bodyTextColor: #ddd;
+    --bodyBackgroundColor: #444;
+    --checkboxColor: #616060;
+    --checkboxSelectedColor: #807e7e;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bodyTextColor: #000;
+    --bodyBackgroundColor: #fff;
+    --checkboxColor: #efefef;
+    --checkboxSelectedColor: #d5d5d5;
+  }
+}
+
+
 body {
   margin: 0;
+  color: var(--bodyTextColor);
+  background-color: var(--bodyBackgroundColor);
 }
 
 * {
   box-sizing: border-box;
 }
 
-body, input, textarea, button {
+body, input, button {
   font-size: 24px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
@@ -18,12 +39,14 @@ body, input, textarea, button {
   #app {
     width: 80%;
     margin-top: 40px;
+    margin-bottom: 40px;
   }
 }
 @media (min-width: 577px) {
   #app {
     width: 500px;
     margin-top: 100px;
+    margin-bottom: 100px;
   }
 }
 
@@ -35,7 +58,8 @@ body, input, textarea, button {
   padding: 0 20px;
   border-radius: 4px;
   text-align: center;
-  background-color: #efefef;
+  color: var(--bodyTextColor);
+  background-color: var(--checkboxColor);
 }
 
 .option1 {
@@ -60,14 +84,14 @@ body, input, textarea, button {
   user-select: none;
 }
 .optionCheckboxWrapper.checked .optionCheckbox {
-  background-color: #d5d5d5;
+  background-color: var(--checkboxSelectedColor);
 }
 .optionCheckbox {
   float: left;
   width: 30px;
   height: 30px;
   border-radius: 4px;
-  background-color: #efefef;
+  background-color: var(--checkboxColor);
 }
 .optionCheckboxBigTitle {
   float: left;
@@ -98,7 +122,7 @@ body, input, textarea, button {
   margin-top: 10px;
   border-radius: 4px;
   -webkit-appearance: none;
-  background-color: #efefef;
+  background-color: var(--checkboxColor);
 }
 .optionRange::-webkit-slider-thumb {
   width: 30px;
@@ -107,5 +131,5 @@ body, input, textarea, button {
   cursor: pointer;
   border-radius: 4px;
   -webkit-appearance: none;
-  background-color: #d5d5d5;
+  background-color: var(--checkboxSelectedColor);
 }
