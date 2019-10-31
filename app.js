@@ -2,12 +2,31 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
 }
 
+const writeCookie = props => {
+  const theDate = new Date()
+  const oneYearLater = new Date(theDate.getTime() + 31536000000)
+  const expiryDate = oneYearLater.toGMTString()
+  document.cookie = props.key + '=' + props.value + '; expires=' + expiryDate + '; path=/'
+}
+const readCookie = props => {
+  const getCookie = document.cookie.match('(^|;)\\s*' + props.key + '\\s*=\\s*([^;]+)')
+  return getCookie ? JSON.parse(getCookie.pop()) : ''
+}
+
+const getCookie = {
+  length: readCookie({ key: 'length' }),
+  lowercase: readCookie({ key: 'lowercase' }),
+  uppercase: readCookie({ key: 'uppercase' }),
+  digits: readCookie({ key: 'digits' }),
+  symbols: readCookie({ key: 'symbols' })
+}
+
 const options = {
-  length: 16,
-  lowercase: true,
-  uppercase: false,
-  digits: false,
-  symbols: false
+  length: getCookie.length || 16,
+  lowercase: getCookie.lowercase === false ? false : true,
+  uppercase: getCookie.uppercase || false,
+  digits: getCookie.digits || false,
+  symbols: getCookie.symbols || false
 }
 
 const randomNumber = (min, max) => {
@@ -51,12 +70,21 @@ const checkboxListener = function () {
   } else {
     this.classList.remove('checked')
   }
+
+  writeCookie({ key: getId, value: options[getId] })
 }
 
 const checkboxes = document.getElementsByClassName('optionCheckboxWrapper')
 for (let i = 0; i < checkboxes.length; i++) {
   const checkbox = checkboxes[i]
+  const getId = checkbox.getAttribute('data-id')
   checkbox.addEventListener('click', checkboxListener)
+
+  if (options[getId] === true) {
+    checkbox.classList.add('checked')
+  } else {
+    checkbox.classList.remove('checked')
+  }
 }
 
 const rangeListener = function () {
@@ -70,6 +98,8 @@ const rangeListener = function () {
       options[getId] = getValue
 
       passwordGenerator()
+
+      writeCookie({ key: getId, value: options[getId] })
     }
   })
 }
@@ -77,6 +107,7 @@ const rangeListener = function () {
 const ranges = document.getElementsByClassName('optionRange')
 for (let i = 0; i < ranges.length; i++) {
   const range = ranges[i]
+  const getId = range.getAttribute('data-id')
   range.addEventListener('mousedown', () => {
     rangeListener()
     range.addEventListener('mousemove', rangeListener)
@@ -86,4 +117,8 @@ for (let i = 0; i < ranges.length; i++) {
   })
   range.addEventListener('keydown', rangeListener)
   range.addEventListener('change', rangeListener)
+
+  range.value = options[getId]
+  const optionValue = document.getElementById(getId + 'Value')
+  optionValue.innerHTML = options[getId]
 }
