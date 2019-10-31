@@ -54,6 +54,10 @@ body, input, button {
   }
 }
 
+#appTitle {
+  margin-bottom: 30px;
+}
+
 #generatedPasswordWrapper {
   position: relative;
 }
