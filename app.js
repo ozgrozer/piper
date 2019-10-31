@@ -1,3 +1,7 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+}
+
 const options = {
   length: 16,
   lowercase: true,
