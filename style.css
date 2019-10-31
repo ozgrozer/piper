@@ -74,9 +74,7 @@ body, input, textarea, button {
   margin-left: 16px;
 }
 .optionCheckboxSmallTitle {
-  color: #777;
   float: right;
-  font-size: 14px;
   line-height: 30px;
 }
 
