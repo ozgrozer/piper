@@ -112,6 +112,33 @@ body, input, button {
   background-color: var(--checkboxColor);
 }
 
+#passwordStrength {
+  width: 100%;
+  height: 15px;
+  margin-top: 20px;
+  overflow: hidden;
+  background-color: #eee;
+  border-radius: var(--borderRadius);
+  background-color: var(--checkboxColor);
+}
+#passwordStrengthTrack {
+  height: 15px;
+  transition: all 200ms;
+  border-radius: var(--borderRadius);
+}
+#passwordStrengthTrack.weak {
+  background-color: #e74c3d;
+}
+#passwordStrengthTrack.average {
+  background-color: #e77e23;
+}
+#passwordStrengthTrack.strong {
+  background-color: #f1c410;
+}
+#passwordStrengthTrack.secure {
+  background-color: #2fcc71;
+}
+
 .option1 {
   height: 70px;
   overflow: hidden;

@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+}
+
+let generatedPassword = ''
+
 const writeCookie = props => {
   const theDate = new Date()
   const oneYearLater = new Date(theDate.getTime() + 31536000000)
@@ -19,8 +25,49 @@ const copyToClipboard = str => {
   document.body.removeChild(el)
 }
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
+const scorePassword = password => {
+  let score = 0
+  if (!password) return score
+
+  const letters = {}
+  for (let i = 0; i < password.length; i++) {
+    letters[password[i]] = (letters[password[i]] || 0) + 1
+    score += 5.0 / letters[password[i]]
+  }
+
+  const variations = {
+    digits: /\d/.test(password),
+    lower: /[a-z]/.test(password),
+    upper: /[A-Z]/.test(password),
+    nonWords: /\W/.test(password)
+  }
+
+  variationCount = 0
+  for (let check in variations) {
+    variationCount += (variations[check] == true) ? 1 : 0
+  }
+  score += (variationCount - 1) * 10
+
+  return parseInt(score)
+}
+const checkPasswordStrength = score => {
+  let result = ''
+  if (score >= 80) {
+    result = 'secure'
+  } else if (score >= 60) {
+    result = 'strong'
+  } else if (score >= 50) {
+    result = 'average'
+  } else if (score >= 0) {
+    result = 'weak'
+  }
+  return result
+}
+const scorePasswordDom = password => {
+  const _scorePassword = scorePassword(password)
+  const _checkPasswordStrength = checkPasswordStrength(_scorePassword)
+  document.getElementById('passwordStrengthTrack').style.width = _scorePassword + '%'
+  document.getElementById('passwordStrengthTrack').className = _checkPasswordStrength
 }
 
 const getCookie = {
@@ -33,7 +80,7 @@ const getCookie = {
 
 const options = {
   length: getCookie.length || 16,
-  lowercase: getCookie.lowercase === false ? false : true,
+  lowercase: getCookie.lowercase !== false,
   uppercase: getCookie.uppercase || false,
   digits: getCookie.digits || false,
   symbols: getCookie.symbols || false
@@ -66,9 +113,10 @@ const generatePassword = length => {
 const generatedPasswordSelector = document.getElementById('generatedPassword')
 const passwordGenerator = () => {
   const newPassword = generatePassword(options.length)
+  generatedPassword = newPassword
   generatedPasswordSelector.value = newPassword
+  scorePasswordDom(newPassword)
 }
-passwordGenerator()
 
 const checkboxListener = function () {
   const getId = this.getAttribute('data-id')
@@ -83,7 +131,6 @@ const checkboxListener = function () {
 
   writeCookie({ key: getId, value: options[getId] })
 }
-
 const checkboxes = document.getElementsByClassName('optionCheckboxWrapper')
 for (let i = 0; i < checkboxes.length; i++) {
   const checkbox = checkboxes[i]
@@ -113,7 +160,6 @@ const rangeListener = function () {
     }
   })
 }
-
 const ranges = document.getElementsByClassName('optionRange')
 for (let i = 0; i < ranges.length; i++) {
   const range = ranges[i]
@@ -138,5 +184,7 @@ document.getElementById('generateNewPassword').addEventListener('click', () => {
 })
 
 document.getElementById('copyPassword').addEventListener('click', () => {
-  copyToClipboard(generatedPasswordSelector.value)
+  copyToClipboard(generatedPassword)
 })
+
+passwordGenerator()
