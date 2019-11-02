@@ -66,6 +66,7 @@ const checkPasswordStrength = score => {
 const scorePasswordDom = password => {
   const _scorePassword = scorePassword(password)
   const _checkPasswordStrength = checkPasswordStrength(_scorePassword)
+  document.getElementById('passwordStrength').setAttribute('title', _scorePassword)
   document.getElementById('passwordStrengthTrack').style.width = _scorePassword + '%'
   document.getElementById('passwordStrengthTrack').className = _checkPasswordStrength
 }
