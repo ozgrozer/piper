@@ -2,4 +2,5 @@
 
 Random password generator
 
-<img src="preview.jpg" alt="" width="553" />
+<img src="images/preview/dark.jpg" alt="" width="400" />
+<img src="images/preview/light.jpg" alt="" width="400" />
