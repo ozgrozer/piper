@@ -4,7 +4,8 @@
     --bodyBackgroundColor: #444;
     --checkboxColor: #616060;
     --checkboxSelectedColor: #807e7e;
-    --gitHubIcon: url('images/github/github-mark-light-32px.png');
+    --gitHubIcon: url('images/github/github-light.png');
+    --twitterIcon: url('images/twitter/twitter-light.png');
   }
 }
 
@@ -14,7 +15,8 @@
     --bodyBackgroundColor: #fff;
     --checkboxColor: #efefef;
     --checkboxSelectedColor: #d5d5d5;
-    --gitHubIcon: url('images/github/github-mark-dark-32px.png');
+    --gitHubIcon: url('images/github/github-dark.png');
+    --twitterIcon: url('images/twitter/twitter-dark.png');
   }
 }
 
@@ -49,7 +51,8 @@ body, input, button {
 }
 @media (min-width: 577px) {
   #app {
-    width: 500px;
+    padding: 100px;
+    width: 700px;
     margin-top: 100px;
     margin-bottom: 100px;
   }
@@ -61,7 +64,7 @@ body, input, button {
   line-height: 54px;
   margin-bottom: 30px;
 }
-#gitHubIcon {
+#gitHubIcon, #twitterIcon {
   width: 24px;
   height: 24px;
   margin-left: 10px;
@@ -71,6 +74,12 @@ body, input, button {
   background-repeat: no-repeat;
   background-position: center center;
   background-image: var(--gitHubIcon);
+}
+#gitHubIcon {
+  background-image: var(--gitHubIcon);
+}
+#twitterIcon {
+  background-image: var(--twitterIcon);
 }
 
 #generatedPasswordWrapper {
